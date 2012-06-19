@@ -31,6 +31,13 @@ ActsAsContextual.configure do |config|
   config.current_context = ThingWhichContextualize.first // or whatever you want
 end
 ```
+will load only ThingToContextualize which are contextualized with current_context
+
+##TODO
+
+1. Options for acts_as_contextual (contextualize by default or not)
+2. Whatever which could be usefull
+
 ## Contributing
 
 1. Fork it
