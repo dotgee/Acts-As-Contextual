@@ -17,9 +17,20 @@ Or install it yourself as:
     $ gem install acts_as_contextual
 
 ## Usage
+```ruby
+class ThingWhichContextualize << ActiveRecord::Base
+  acts_as_contextualizer
+end
 
-TODO: Write usage instructions here
+class ThingToContextualize << ActiveRecord::Base
+  acts_as_contextual  :allow_contextualisation => true
+end
 
+//config/initializers/acts_as_contextual.rb
+ActsAsContextual.configure do |config|
+  config.current_context = ThingWhichContextualize.first // or whatever you want
+end
+```
 ## Contributing
 
 1. Fork it
