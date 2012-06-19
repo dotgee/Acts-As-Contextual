@@ -1,5 +1,5 @@
-module ActsAsContextualize
-  module ActsAsContext
+module ActsAsContextual
+  module ActsAsContextualizer
     extend ActiveSupport::Concern
 
     included do
@@ -17,4 +17,4 @@ module ActsAsContextualize
   end
 end
 
-ActiveRecord::Base.send :include, ActsAsContextual::ActsAsContext
+ActiveRecord::Base.send :include, ActsAsContextual::ActsAsContextualizer
