@@ -16,6 +16,9 @@ module ActsAsContextual
           sleep 1
         end
       end 
+      def copy_config_file
+        template 'initializers/acts_as_contextual_config.rb', 'config/initializers/acts_as_contextual_config.rb'
+      end
     end
   end
 end
