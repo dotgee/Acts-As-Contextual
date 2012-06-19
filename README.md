@@ -1,6 +1,6 @@
 # ActsAsContextual
 
-TODO: Write a gem description
+add default_scope to ActiveRecord and other
 
 ## Installation
 
@@ -10,11 +10,19 @@ Add this line to your application's Gemfile:
 
 And then execute:
 
-    $ bundle
+    $ bundle install
 
 Or install it yourself as:
 
     $ gem install acts_as_contextual
+
+##Initialization
+
+Run:
+    
+    rails g acts_as_contextual:install
+    rake db:migrate
+    edit config/initializers/acts_as_contextual_config.rb
 
 ## Usage
 ```ruby
