@@ -1,5 +1,6 @@
 require "acts_as_contextual/version"
+require 'active_record'
 
 module ActsAsContextual
-  # Your code goes here...
+  require "acts_as_contextual/acts_as_contextual"
 end
