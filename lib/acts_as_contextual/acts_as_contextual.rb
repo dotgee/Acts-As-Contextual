@@ -24,13 +24,20 @@ module ActsAsContextual
         scope :contextualized, lambda { |ctx = ActsAsContextual.config.current_context |
             where(["#{Contextualizable.table_name}.contextualizer_id = ? and #{Contextualizable.table_name}.contextualizer_type = ?", ctx.id, ctx.class.name]).includes(:contextualizable)
         }
-
+      
+        def each_with_context(opts = {})
+          unscoped.includes({:contextualizable => :contextualizer}).all.group_by(&:contextualizer)
+        end
       end
-
     end
 
     module InstanceMethodsOnlyActsAsContext
       
+      def contextualizer
+        return contextualizable.contextualizer if contextualizable
+        nil
+      end
+
       def context_id
         return @context_id if @context_id
         @context_id = contextualizable.contextualizer_id if contextualizable
