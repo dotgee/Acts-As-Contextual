@@ -17,9 +17,13 @@ module ActsAsContextual
         
         default_scope do 
           unless ActsAsContextual.config.current_context.nil?
-            where(["#{Contextualizable.table_name}.contextualizer_id = ? and #{Contextualizable.table_name}.contextualizer_type = ?", ActsAsContextual.config.current_context.id, ActsAsContextual.config.current_context.class.name]).includes(:contextualizable)
-          end
-        end
+            contextualized
+          end 
+        end if opts[:default_scoped]
+
+        scope :contextualized, lambda { |ctx = ActsAsContextual.config.current_context |
+            where(["#{Contextualizable.table_name}.contextualizer_id = ? and #{Contextualizable.table_name}.contextualizer_type = ?", ctx.id, ctx.class.name]).includes(:contextualizable)
+        }
 
       end
 
