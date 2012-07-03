@@ -1,8 +1,8 @@
 module ActsAsContextual 
   module ContextHelper
     def each_in_context(contextualized_klass, opts = {}, &block)
-
-      eachs = contextualized_klass.each_with_context(opts)
+      order_by = opts.delete(:order_by) || :id
+      eachs = contextualized_klass.each_with_context(opts).sort(order_by)
       eachs = eachs.to_a.select{|c,itms| !c.nil? }
       sort = opts.delete(:context_sort) || :id
       sort_order = opts.delete(:reverse) || false
