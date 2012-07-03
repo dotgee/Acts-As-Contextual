@@ -26,7 +26,7 @@ module ActsAsContextual
         }
       
         def each_with_context(opts = {})
-          unscoped.includes({:contextualizable => :contextualizer}).all.group_by(&:contextualizer)
+          unscoped.includes({:contextualizable => :contextualizer}).all.group_by(&:contextualizer).sort(opts[:order_by] || "id ASC")
         end
       end
     end
